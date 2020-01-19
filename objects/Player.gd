@@ -29,8 +29,10 @@ func _process(delta):
 			$AnimatedSprite.animation = "up"
 			$AnimatedSprite.flip_v = velocity.y > 0
 		$AnimatedSprite.play()
+		$Trail.emitting = true
 	else:
 		$AnimatedSprite.stop()
+		$Trail.emitting = false
 	position += velocity * delta
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
