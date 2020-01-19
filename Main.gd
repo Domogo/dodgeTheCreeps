@@ -11,9 +11,12 @@ func game_over():
 	$ScoreTimer.stop()
 	$MobTimer.stop()
 	$HUD.show_game_over()
+	$Music.stop()
+	$DeathSound.play()
 
 
 func new_game():
+	$Music.play()
 	score = 0
 	$HUD.update_score(score)
 	$HUD.show_message("Get Ready!")
@@ -37,6 +40,7 @@ func _on_MobTimer_timeout():
 	# set the velocity ( speed and direction )
 	mob.linear_velocity = Vector2(rand_range(mob.min_speed, mob.max_speed), 0)
 	mob.linear_velocity = mob.linear_velocity.rotated(direction)
+	$HUD.connect("start_game", mob, "_on_start_game")
 
 
 func _on_ScoreTimer_timeout():
