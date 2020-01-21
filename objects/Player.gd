@@ -2,7 +2,7 @@ extends Area2D
 
 signal hit
 
-export var speed = 800 # speed of player (pixels per sec)
+export var speed = 1000 # speed of player (pixels per sec)
 var screen_size
 var target = position
 var prev_target
